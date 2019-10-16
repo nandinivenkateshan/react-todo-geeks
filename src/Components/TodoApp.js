@@ -49,8 +49,15 @@ class AddTodo extends Component {
     this.setState({ items: items })
   }
 
-  handleUpdate (key) {
-    console.log('fgnbkj')
+  handleUpdate (key, event) {
+    const item = this.state.items.map(item => {
+      if (item.id === key) {
+        item.text = event.target.value
+        return item
+      }
+      return item
+    })
+    this.setState({ items: item })
   }
 
   render () {
@@ -66,7 +73,7 @@ class AddTodo extends Component {
         <main>
           <Todos
             todos={this.state.items} onDelete={(key) => this.handleDelete(key)}
-            onCheckBox={(key) => this.handleCheckBox(key)} onUpdate={(key) => this.handleUpdate(key)}
+            onCheckBox={(key) => this.handleCheckBox(key)} onUpdate={(key, event) => this.handleUpdate(key, event)}
           />
         </main>
       </div>
@@ -84,20 +91,19 @@ class Todos extends Component {
     this.props.onCheckBox(key)
   }
 
-  handleUpdate (key) {
-    this.props.onUpdate(key)
+  handleUpdate (key, event) {
+    this.props.onUpdate(key, event)
   }
 
   render () {
     const todos = this.props.todos
     const list = todos.map(item => {
       const checkBoxClass = (item.complete) ? 'strike-through' : 'text-area'
-      console.log(checkBoxClass)
       return <li key={item.id} className='todo-list'>
         <input type='checkbox' onChange={() => this.handleCheckBox(item.id)} />
-        <textarea value={item.text} onChange={() => this.handleUpdate(item.id)} className={checkBoxClass}>{item.text}</textarea>
+        <textarea name='textarea' value={item.text} onChange={(event) => this.handleUpdate(item.id, event)} className={checkBoxClass}>{item.text}</textarea>
         <button className='delete-btn' onClick={() => this.handleDelete(item.id)}>Delete</button>
-      </li>
+             </li>
     })
     return (
       <ul>{list}</ul>
