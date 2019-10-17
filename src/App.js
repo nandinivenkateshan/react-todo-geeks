@@ -3,7 +3,9 @@ import TodoApp from './Components/TodoApp'
 
 function App () {
   return (
-    <TodoApp />
+    <div className='App'>
+      <TodoApp />
+    </div>
   )
 }
 

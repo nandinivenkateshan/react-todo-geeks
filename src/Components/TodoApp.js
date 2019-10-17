@@ -1,125 +1,63 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import AddTodo from './AddTodo'
+import Todo from './Todo'
 import './style.css'
 
-class AddTodo extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      input: '',
-      items: []
-    }
-  }
+function TodoApp () {
+  const [input, setInput] = useState('')
+  const [items, setItem] = useState([])
 
-  handleInput (event) {
-    this.setState({
-      input: event.target.value
-    })
-  }
+  const handleInput = event => setInput(event.target.value)
 
-  handleSubmit (event) {
-    const array = this.state.items
+  const handleSubmit = event => {
+    event.preventDefault()
     const item = {
-      id: (array.length > 0) ? array[array.length - 1].id + 1 : 1,
-      text: this.state.input,
+      id: (items.length > 0) ? items[items.length - 1].id + 1 : 1,
+      text: input,
       complete: false
     }
-    this.setState(prevState => {
-      return {
-        items: prevState.items.concat(item)
-      }
-    })
-    this.setState({ input: '' })
-    event.preventDefault()
+    const str = item.text.trim()
+    if (str === '') alert('Enter the values')
+    else setItem(items.concat(item))
+    setInput('')
   }
 
-  handleDelete (key) {
-    const item = this.state.items.filter(item => item.id !== key)
-    this.setState({ items: item })
+  const handleDelete = key => {
+    const item = items.filter(item => item.id !== key)
+    setItem(item)
   }
 
-  handleCheckBox (key) {
-    const items = this.state.items.map(item => {
+  const handleCheckBox = key => {
+    const item = items.map(item => {
       if (item.id === key) {
         item.complete = !item.complete
         return item
       }
       return item
-    }
-    )
-    this.setState({ items: items })
+    })
+    setItem(item)
   }
 
-  handleUpdate (key, event) {
-    const item = this.state.items.map(item => {
+  const handleUpdate = (key, event) => {
+    const item = items.map(item => {
       if (item.id === key) {
         item.text = event.target.value
         return item
       }
       return item
     })
-    this.setState({ items: item })
+    setItem(item)
   }
 
-  render () {
-    return (
-      <div>
-        <header className='header'>
-          <h1>Todo</h1>
-          <form onSubmit={(event) => this.handleSubmit(event)}>
-            <input type='text' className='input-box' placeholder='Enter a Task' onChange={(event) => this.handleInput(event)} value={this.state.input} />
-            <button type='submit' className='add-btn'>Add</button>
-          </form>
-        </header>
-        <main>
-          <Todos
-            todos={this.state.items} onDelete={(key) => this.handleDelete(key)}
-            onCheckBox={(key) => this.handleCheckBox(key)} onUpdate={(key, event) => this.handleUpdate(key, event)}
-          />
-        </main>
-      </div>
-
-    )
-  }
-}
-
-class Todos extends Component {
-  handleDelete (key) {
-    this.props.onDelete(key)
-  }
-
-  handleCheckBox (key) {
-    this.props.onCheckBox(key)
-  }
-
-  handleUpdate (key, event) {
-    this.props.onUpdate(key, event)
-  }
-
-  render () {
-    const todos = this.props.todos
-    const list = todos.map(item => {
-      const checkBoxClass = (item.complete) ? 'strike-through' : 'text-area'
-      return <li key={item.id} className='todo-list'>
-        <input type='checkbox' onChange={() => this.handleCheckBox(item.id)} />
-        <textarea name='textarea' value={item.text} onChange={(event) => this.handleUpdate(item.id, event)} className={checkBoxClass}>{item.text}</textarea>
-        <button className='delete-btn' onClick={() => this.handleDelete(item.id)}>Delete</button>
-             </li>
-    })
-    return (
-      <ul>{list}</ul>
-    )
-  }
-}
-
-class TodoApp extends Component {
-  render () {
-    return (
-      <div>
-        <AddTodo />
-      </div>
-
-    )
-  }
+  return (
+    <div>
+      <AddTodo input={input} onInput={event => handleInput(event)} onSubmit={event => handleSubmit(event)} />
+      <Todo
+        items={items} onDelete={(key) => handleDelete(key)}
+        onCheckBox={(key) => handleCheckBox(key)} onUpdate={(key, event) => handleUpdate(key, event)}
+      />
+    </div>
+  )
 }
 
 export default TodoApp
