@@ -1,97 +1,190 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-  .header  {
-      text-align: center;
-      font-size: 30px;
-      color: rgb(189, 111, 111);
-      padding: 20px;
-      text-shadow: 5px 5px 3px rgb(59, 59, 59);
-    }
+.header {
+  text-align: center;
+  font-size: 30px;
+  color: rgb(189, 111, 111);
+  padding: 20px;
+  text-shadow: 5px 5px 3px rgb(59, 59, 59);
+}
 
-    .header .input-box {
-      padding: 10px;
-      background-color: rgb(222, 245, 245);
-      box-shadow: 5px 5px 5px grey;
-      color: rgb(117, 53, 53);
-      font-size: 20px;
-      border: none;
-      font-weight: bold;
-    }
+.header .input-box {
+  padding: 10px;
+  background-color: rgb(222, 245, 245);
+  box-shadow: 5px 5px 5px grey;
+  color: rgb(117, 53, 53);
+  font-size: 20px;
+  border: none;
+  font-weight: bold;
+}
 
-    .todo-list {
-      list-style-type: none;
-    }
+.todo-list {
+  list-style-type: none;
+}
 
-    .header .add-btn {
-      width: 60px;
-      padding: 10px;
-      border: none;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      box-shadow: 5px 5px 5px grey;
-      background-color: rgb(209, 166, 166);
-      text-shadow: 4px 3px 3px rgb(26, 2, 2);
-    }
-    
-    .todo-list {
-      display: flex;
-      background-color: rgb(241, 223, 223);
-      padding: 20px;
-      width: 50%;
-      margin: 20px auto;
-      color: rgb(126, 7, 7);
-      font-weight: bold;
-      box-shadow: 5px 5px 5px grey;
-    }
+.header .add-btn {
+  width: 60px;
+  padding: 10px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 5px 5px 5px grey;
+  background-color: rgb(209, 166, 166);
+  text-shadow: 4px 3px 3px rgb(26, 2, 2);
+}
 
-    .delete-btn {
-      height:33px;
-      border: none;
-      color: white;
-      font-weight: bold;
-      background-color:rgba(146, 77, 77, 0.815);
-      text-shadow:3px 3px 2px rgb(77, 35, 35);
-      border-radius: 7px;
-      box-shadow:3px 5px 1px rgb(68, 37, 37);
-      font-size: 17px;
-      padding:10px;
-    }
+.todo-list {
+  display: flex;
+  background-color: rgb(241, 223, 223);
+  padding: 20px;
+  width: 50%;
+  margin: 20px auto;
+  color: rgb(126, 7, 7);
+  font-weight: bold;
+  box-shadow: 5px 5px 5px grey;
+}
 
-    .text-area {
-      border-color:rgb(187, 135, 135);
-      resize: none;
-      height: 40px;
-      color: rgb(185, 29, 34);
-      font-weight: bold;
-      margin: 0px 20px 0px 20px;
-      font-size:15px;
-      padding:10px;
-    }
+.delete-btn {
+  height: 33px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(146, 77, 77, 0.815);
+  text-shadow: 3px 3px 2px rgb(77, 35, 35);
+  border-radius: 7px;
+  box-shadow: 3px 5px 1px rgb(68, 37, 37);
+  font-size: 17px;
+  width: 100px;
+}
 
-   .strike-through {
-    border-color:rgb(187, 135, 135);
-    resize: none;
-    height: 40px;
-    color:green;
-    font-weight: bold;
-    margin: 0px 20px 0px 20px;
-    text-decoration: line-through;
-    pointer-events: none;
-    opacity: 0.5;
-    font-size:15px;
-    padding:10px;
-   }
-  
-   .note-btn {
-    height:25px;
-    border: none;
-    color: white;
-    font-weight: bold;
-    background-color:rgba(146, 77, 77, 0.815);
-    text-shadow:2px 2px 5px rgb(34, 31, 31);
-    border-radius: 7px;
-   }
-    
+.text-area {
+  border-color: rgb(187, 135, 135);
+  resize: none;
+  height: 40px;
+  color: rgb(185, 29, 34);
+  font-weight: bold;
+  margin: 0px 20px 0px 20px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.strike-through {
+  border-color: rgb(187, 135, 135);
+  resize: none;
+  height: 40px;
+  color: green;
+  font-weight: bold;
+  margin: 0px 20px 0px 20px;
+  text-decoration: line-through;
+  pointer-events: none;
+  opacity: 0.5;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.note-btn {
+  height: 33px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(146, 77, 77, 0.815);
+  text-shadow: 3px 3px 2px rgb(77, 35, 35);
+  border-radius: 7px;
+  box-shadow: 3px 5px 1px rgb(68, 37, 37);
+  font-size: 17px;
+  width: 100px;
+  margin-left: 20px;
+}
+
+.pop-up-note {
+  height: 150px;
+  width: 200px;
+  position: fixed;
+  top: calc(100vh - 150px);
+  left: calc(60vw - 350px);
+  background-color: rgb(78, 69, 65);
+}
+
+.pop-up-note .textarea-note {
+  height: 100px;
+  width: 194px;
+  border: none;
+  resize: none;
+  outline: none;
+  margin: 3px;
+  color: rgb(90, 2, 2);
+}
+
+.pop-up-note .save-btn {
+  height: 30px;
+  width: 60px;
+  border: none;
+  background-color: rgb(108, 133, 108);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 35px;
+}
+.pop-up-note .close-btn {
+  height: 30px;
+  width: 60px;
+  border: none;
+  background-color: rgb(236, 93, 93);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+.due-date-btn {
+  height: 33px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(146, 77, 77, 0.815);
+  text-shadow: 3px 3px 2px rgb(77, 35, 35);
+  border-radius: 7px;
+  box-shadow: 3px 5px 1px rgb(68, 37, 37);
+  font-size: 17px;
+  width: 100px;
+  margin-left: 20px;
+}
+
+.pop-up-date {
+  height: 90px;
+  width: 180px;
+  position: fixed;
+  top: calc(100vh - 150px);
+  left: calc(60vw - 180px);
+  background-color: rgb(82, 80, 75);
+}
+
+.pop-up-date input {
+  margin: 10px 0px 0px 20px;
+}
+.pop-up-date .save-btn {
+  height: 20px;
+  width: 60px;
+  border: none;
+  color: rgb(20, 32, 3);
+  background-color: rgb(238, 228, 228);
+  font-weight: bold;
+  font-size: 15px;
+  margin: 20px 0px 0px 30px;
+}
+.pop-up-date .close-btn {
+  height: 20px;
+  width: 60px;
+  border: none;
+  color: rgb(107, 6, 6);
+  background-color: rgb(238, 228, 228);
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 4px;
+}
+
+.show-input-date label {
+  display: block;
+  margin-left:70px;
+}

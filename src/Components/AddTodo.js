@@ -15,6 +15,7 @@ function AddTodo (props) {
           value={props.input} onChange={event => handleInput(event)}
         />
         <button className='add-btn'>Add</button>
+        
       </form>
     </header>
   )
