@@ -103,7 +103,7 @@
   height: 150px;
   width: 200px;
   position: fixed;
-  top: calc(100vh - 150px);
+  top: calc(60vh - 130px);
   left: calc(60vw - 350px);
   background-color: rgb(78, 69, 65);
 }
@@ -155,7 +155,7 @@
   height: 90px;
   width: 180px;
   position: fixed;
-  top: calc(100vh - 150px);
+  top: calc(60vh - 150px);
   left: calc(60vw - 180px);
   background-color: rgb(82, 80, 75);
 }
@@ -187,4 +187,18 @@
 .show-input-date label {
   display: block;
   margin-left:70px;
+}
+
+.select {
+  width: 150px;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 5px 5px 5px grey;
+  background-color: rgb(209, 166, 166);
+  text-shadow: 4px 3px 3px rgb(26, 2, 2);
+  margin-left: 10px;
+  text-align: center;
+
 }

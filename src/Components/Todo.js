@@ -13,7 +13,7 @@ function Todo (props) {
 
   const handleUpdate = (key, event) => props.onUpdate(key, event)
 
-  const handleNote = key => props.onNote(key)
+  const handleNote = (key) => props.onNote(key)
 
   const handleDueDate = key => props.onDueDate(key)
 
@@ -27,7 +27,7 @@ function Todo (props) {
           {item.saveDate && <label>{item.updateDate}</label>}
         </div>
         <Delete id={item.id} onDelete={key => handleDelete(key)} />
-        <Note id={item.id} onNote={key => handleNote(key)} />
+        <Note id={item.id} onNote={key => handleNote(key)} status />
         <DueDate id={item.id} onDueDate={key => handleDueDate(key)} />
       </li>
     )

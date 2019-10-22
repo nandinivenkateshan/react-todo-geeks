@@ -8,6 +8,8 @@ import './style.css'
 function TodoApp () {
   const [input, setInput] = useState('')
   const [items, setItem] = useState([])
+  const [showNote, setShowNote] = useState(true)
+  const [showDate, setShowDate] = useState(true)
 
   const handleInput = event => setInput(event.target.value)
 
@@ -57,6 +59,7 @@ function TodoApp () {
   }
 
   const handleNote = key => {
+    setShowNote(true)
     const newItems = items.map(item => {
       if (item.id === key) {
         item.note = true
@@ -81,6 +84,7 @@ function TodoApp () {
   }
 
   const handleDueDate = key => {
+    setShowDate(true)
     const newItems = items.map(item => {
       if (item.id === key) {
         item.dueDate = true
@@ -115,23 +119,49 @@ function TodoApp () {
     })
     setItem(newItems)
   }
+  const handleCloseNote = () => setShowNote(false)
+
+  const handleCloseDate = () => setShowDate(false)
+
+  const handleFilterTodo = (val) => {
+    if (val === 'Completed') {
+      const newItems = items.filter(item => item.complete === true)
+      setItem(newItems)
+    }
+    if (val === 'Pending') {
+      const newItems = items.filter(item => item.complete === false)
+      setItem(newItems)
+    }
+    if (val === 'All') {
+      setItem(items)
+    }
+  }
 
   return (
     <div>
-      <AddTodo input={input} onInput={event => handleInput(event)} onSubmit={event => handleSubmit(event)} />
+      <AddTodo
+        input={input} onInput={event => handleInput(event)} onSubmit={event => handleSubmit(event)}
+        onUpdatedFilter={(filteredVal) => handleFilterTodo(filteredVal)}
+      />
       <Todo
         items={items} onDelete={(key) => handleDelete(key)}
         onCheckBox={(key) => handleCheckBox(key)} onUpdate={(key, event) => handleUpdate(key, event)}
         onNote={key => handleNote(key)} onDueDate={key => handleDueDate(key)}
+
       />
       {items.map(item => {
-        return (item.note && <PopUpNote key={item.id} item={item} onPopUpNote={(event, id) => handlePopUpNote(event, id)} />)
+        return (item.note &&
+          <PopUpNote
+            key={item.id} item={item} onPopUpNote={(event, id) => handlePopUpNote(event, id)}
+            show={showNote} onClose={() => handleCloseNote()}
+          />)
       })}
       {items.map(item => {
         return (item.dueDate &&
           <PopUpDate
             key={item.id} id={item.id} onUpdateDate={(event, id) => handleUpdateDate(event, id)}
             date={item.updateDate} onSaveDate={id => handleSaveDate(id)}
+            show={showDate} onCloseDate={() => handleCloseDate()}
           />)
       })}
     </div>

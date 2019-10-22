@@ -1,10 +1,13 @@
 import React from 'react'
+import Filter from './Filter'
 import './style.css'
 
 function AddTodo (props) {
   const handleInput = event => props.onInput(event)
 
   const handleSubmit = event => props.onSubmit(event)
+
+  const handleFilterTodo = (filter) => props.onUpdatedFilter(filter)
 
   return (
     <header className='header'>
@@ -15,7 +18,7 @@ function AddTodo (props) {
           value={props.input} onChange={event => handleInput(event)}
         />
         <button className='add-btn'>Add</button>
-        
+        <Filter onUpdatedFilter={(filter) => handleFilterTodo(filter)} />
       </form>
     </header>
   )

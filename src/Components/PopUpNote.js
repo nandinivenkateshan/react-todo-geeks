@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './style.css'
 
 function PopUpNote (props) {
-  const [val, setVal] = useState(true)
+  console.log(props.show)
   const handlePopUpNote = (event, id) => {
     props.onPopUpNote(event, id)
   }
-  const handleCloseNote = () => setVal(false)
+  const handleCloseNote = () => props.onClose()
 
   return (
-    val && (
+    props.show && (
       <div className='pop-up-note'>
         <textarea value={props.item.noteValue} onChange={(event) => handlePopUpNote(event, props.item.id)} className='textarea-note'>{props.item.noteValue}</textarea>
         <button className='save-btn'>Save</button>

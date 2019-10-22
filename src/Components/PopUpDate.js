@@ -1,21 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './style.css'
 
 function PopUpDate (props) {
-  const [hide, setHide] = useState(true)
   const handleUpdateDate = (event, id) => props.onUpdateDate(event, id)
-  const handleSaveDate = id => {
-    props.onSaveDate(id)
-    setHide(false)
-  }
-  const handleCloseDate = () => setHide(false)
+  const handleSaveDate = id => props.onSaveDate(id)
+  const handleCloseDate = () => props.onCloseDate()
   
   const curDate = new Date()
   const curMonth = curDate.getMonth() >= 9 ? curDate.getMonth() + 1 : '0' + (curDate.getMonth() + 1)
   const curDay = curDate.getDate() >= 9 ? curDate.getDate() : '0' + curDate.getDate()
   const dateStr = curDay + '-' + curMonth + '-' + curDate.getFullYear()
   return (
-    hide && (
+    props.show && (
       <div className='pop-up-date'>
         <input
           type='date'
