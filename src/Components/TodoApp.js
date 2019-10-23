@@ -10,6 +10,7 @@ function TodoApp () {
   const [items, setItem] = useState([])
   const [showNote, setShowNote] = useState(true)
   const [showDate, setShowDate] = useState(true)
+  const [filteredVal, setFilter] = useState(null)
 
   const handleInput = event => setInput(event.target.value)
 
@@ -126,15 +127,13 @@ function TodoApp () {
   const handleFilterTodo = (val) => {
     if (val === 'Completed') {
       const newItems = items.filter(item => item.complete === true)
-      setItem(newItems)
+      setFilter(newItems)
     }
     if (val === 'Pending') {
       const newItems = items.filter(item => item.complete === false)
-      setItem(newItems)
+      setFilter(newItems)
     }
-    if (val === 'All') {
-      setItem(items)
-    }
+    if (val === 'All') setFilter(items)
   }
 
   return (
@@ -144,7 +143,7 @@ function TodoApp () {
         onUpdatedFilter={(filteredVal) => handleFilterTodo(filteredVal)}
       />
       <Todo
-        items={items} onDelete={(key) => handleDelete(key)}
+        items={filteredVal || items} onDelete={(key) => handleDelete(key)}
         onCheckBox={(key) => handleCheckBox(key)} onUpdate={(key, event) => handleUpdate(key, event)}
         onNote={key => handleNote(key)} onDueDate={key => handleDueDate(key)}
 

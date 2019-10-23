@@ -2,7 +2,6 @@ import React from 'react'
 import './style.css'
 
 function PopUpNote (props) {
-  console.log(props.show)
   const handlePopUpNote = (event, id) => {
     props.onPopUpNote(event, id)
   }
