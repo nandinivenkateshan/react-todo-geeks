@@ -5,7 +5,7 @@ function DueDate (props) {
   const handleDueDate = key => props.onDueDate(key)
 
   return (
-    <button className='due-date-btn' onClick={() => handleDueDate(props.id)}>Due-Date</button>
+    <button className='due-date-btn' onClick={() => handleDueDate(props.item.id)}>Due-Date</button>
   )
 }
 

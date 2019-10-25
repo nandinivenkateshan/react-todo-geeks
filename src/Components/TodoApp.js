@@ -8,8 +8,8 @@ import './style.css'
 function TodoApp () {
   const [input, setInput] = useState('')
   const [items, setItem] = useState([])
-  const [showNote, setShowNote] = useState(true)
-  const [showDate, setShowDate] = useState(true)
+  const [showNote, setCloseNote] = useState(true)
+  const [showDate, setCloseDate] = useState(true)
   const [filteredVal, setFilter] = useState(null)
 
   const handleInput = event => setInput(event.target.value)
@@ -60,7 +60,7 @@ function TodoApp () {
   }
 
   const handleNote = key => {
-    setShowNote(true)
+    setCloseNote(true)
     const newItems = items.map(item => {
       if (item.id === key) {
         item.note = true
@@ -85,7 +85,7 @@ function TodoApp () {
   }
 
   const handleDueDate = key => {
-    setShowDate(true)
+    setCloseDate(true)
     const newItems = items.map(item => {
       if (item.id === key) {
         item.dueDate = true
@@ -118,11 +118,25 @@ function TodoApp () {
         return item
       }
     })
+    setCloseDate(false)
     setItem(newItems)
   }
-  const handleCloseNote = () => setShowNote(false)
 
-  const handleCloseDate = () => setShowDate(false)
+  const handleNoDate = id => {
+    const newItems = items.map(item => {
+      if (item.id === id) {
+        item.updateDate = ''
+        return item
+      }
+      return item
+    })
+    setCloseDate(false)
+    setItem(newItems)
+  }
+
+  const handleCloseNote = () => setCloseNote(false)
+
+  const handleCloseDate = () => setCloseDate(false)
 
   const handleFilterTodo = (val) => {
     if (val === 'Completed') {
@@ -146,7 +160,6 @@ function TodoApp () {
         items={filteredVal || items} onDelete={(key) => handleDelete(key)}
         onCheckBox={(key) => handleCheckBox(key)} onUpdate={(key, event) => handleUpdate(key, event)}
         onNote={key => handleNote(key)} onDueDate={key => handleDueDate(key)}
-
       />
       {items.map(item => {
         return (item.note &&
@@ -161,6 +174,7 @@ function TodoApp () {
             key={item.id} id={item.id} onUpdateDate={(event, id) => handleUpdateDate(event, id)}
             date={item.updateDate} onSaveDate={id => handleSaveDate(id)}
             show={showDate} onCloseDate={() => handleCloseDate()}
+            onNoDate={id => handleNoDate(id)}
           />)
       })}
     </div>

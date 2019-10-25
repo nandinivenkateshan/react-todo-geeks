@@ -27,8 +27,8 @@ function Todo (props) {
           {item.saveDate && <label>{item.updateDate}</label>}
         </div>
         <Delete id={item.id} onDelete={key => handleDelete(key)} />
-        <Note id={item.id} onNote={key => handleNote(key)} status />
-        <DueDate id={item.id} onDueDate={key => handleDueDate(key)} />
+        <Note id={item.id} onNote={key => handleNote(key)} />
+        <DueDate item={item} onDueDate={key => handleDueDate(key)} />
       </li>
     )
   })
