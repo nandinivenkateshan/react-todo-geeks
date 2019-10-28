@@ -1,0 +1,24 @@
+.text-area {
+    border-color: rgb(187, 135, 135);
+    resize: none;
+    height: 40px;
+    color: rgb(185, 29, 34);
+    font-weight: bold;
+    margin: 0px 20px 0px 20px;
+    font-size: 15px;
+    padding: 10px;
+  }
+  
+  .strike-through {
+    border-color: rgb(187, 135, 135);
+    resize: none;
+    height: 40px;
+    color: green;
+    font-weight: bold;
+    margin: 0px 20px 0px 20px;
+    text-decoration: line-through;
+    pointer-events: none;
+    opacity: 0.5;
+    font-size: 15px;
+    padding: 10px;
+  }

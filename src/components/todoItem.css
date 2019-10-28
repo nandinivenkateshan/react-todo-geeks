@@ -1,0 +1,17 @@
+.todo-list {
+    list-style-type: none;
+  }
+  .todo-list {
+    display: flex;
+    background-color: rgb(241, 223, 223);
+    padding: 20px;
+    width: 50%;
+    margin: 20px auto;
+    color: rgb(126, 7, 7);
+    font-weight: bold;
+    box-shadow: 5px 5px 5px grey;
+  }
+  .show-input-date label {
+    display: block;
+    margin-left:70px;
+  }
