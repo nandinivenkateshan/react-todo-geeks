@@ -10,3 +10,10 @@
     margin-left: 10px;
     text-align: center;
   }
+  @media (min-width:375px) and (max-width:425px) {
+    .select {
+      padding: 5px;
+      font-size: 18px;
+    }
+  }
+  

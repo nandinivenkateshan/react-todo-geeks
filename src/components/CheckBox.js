@@ -1,10 +1,11 @@
 import React from 'react'
 
 function CheckBox (props) {
-  const handleCheckBox = key => props.onCheckBox(key)
+  const { id, onCheckBox } = props
+  const handleCheckBox = id => onCheckBox(id)
 
   return (
-    <input type='checkbox' onChange={() => handleCheckBox(props.id)} />
+    <input type='checkbox' onChange={() => handleCheckBox(id)} />
   )
 }
 

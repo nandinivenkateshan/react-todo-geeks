@@ -138,23 +138,31 @@ function TodoApp () {
   const handleCloseDate = () => setCloseDate(false)
 
   const handleFilterTodo = (val) => {
-    console.log(items)
-    if (val === 'Completed') setFilter(items.filter(item => item.complete))
+    if (val === 'Completed') {
+      setFilter(items.filter(item => item.complete))
+      // setFilter(null)
+    }
     if (val === 'Pending') setFilter(items.filter(item => !item.complete))
-    if (val === 'All') setFilter(items)
+    if (val === 'All') setFilter(null)
   }
+  // console.log(filteredVal)
+  // if (filteredVal !== null) { setItem(filteredVal)
+  // }
 
   return (
-    <div>
+    <main>
       <AddTodo
         input={input} onInput={event => handleInput(event)} onSubmit={event => handleSubmit(event)}
         onUpdatedFilter={(filteredVal) => handleFilterTodo(filteredVal)}
       />
-      <Todo
-        items={filteredVal || items} onDelete={(key) => handleDelete(key)}
-        onCheckBox={(key) => handleCheckBox(key)} onUpdate={(key, event) => handleUpdate(key, event)}
-        onNote={key => handleNote(key)} onDueDate={key => handleDueDate(key)}
-      />
+      <ul>
+        <Todo
+          items={filteredVal || items} onDelete={(key) => handleDelete(key)}
+          onCheckBox={(key) => handleCheckBox(key)} onUpdate={(key, event) => handleUpdate(key, event)}
+          onNote={key => handleNote(key)} onDueDate={key => handleDueDate(key)}
+        />
+      </ul>
+
       {items.map(item => {
         return (item.note &&
           <PopUpNote
@@ -171,7 +179,7 @@ function TodoApp () {
             onNoDate={id => handleNoDate(id)}
           />)
       })}
-    </div>
+    </main>
   )
 }
 

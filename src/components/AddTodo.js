@@ -13,7 +13,7 @@ function AddTodo (props) {
   return (
     <header className='header'>
       <h1>Todos</h1>
-      <form onSubmit={event => handleSubmit(event)}>
+      <form onSubmit={event => handleSubmit(event)} className='form'>
         <input
           type='text' className='input-box' placeholder='Enter a Task'
           value={input} onChange={event => handleInput(event)}

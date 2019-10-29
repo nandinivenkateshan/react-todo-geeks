@@ -27,3 +27,21 @@
     background-color: rgb(209, 166, 166);
     text-shadow: 4px 3px 3px rgb(26, 2, 2);
   }
+  
+  @media (min-width:375px) and (max-width:425px) {
+    .header {
+      font-size: 25px;
+    }
+    .header .input-box {
+      padding: 5px;
+      font-size: 18px;
+      width:180px;
+    }
+    .header .add-btn {
+      padding: 5px;
+      font-size: 18px;
+      width: 45px;
+    }
+  }
+
+  
